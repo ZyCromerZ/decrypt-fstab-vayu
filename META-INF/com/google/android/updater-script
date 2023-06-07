@@ -1,0 +1,29 @@
+ui_print(" ");
+ui_print("*************************************");
+ui_print("*       DFE for MIUI12/13 VAYU      *");
+ui_print("*Make  sure your system is RW capable");
+ui_print("*  your storage MUST not encrypted  *");
+ui_print("*if your storage is encrypted please*");
+ui_print("*FORMAT ur DATA afterflash this file*");
+ui_print("*************************************");
+ui_print(" ");
+
+ui_print ("- Mounting Partitions");
+package_extract_file("META-INF/com/miui/mount.sh", "/tmp/mount.sh");
+set_perm(0, 0, 0777, "/tmp/mount.sh");
+run_program("/tmp/mount.sh", "");
+delete("/tmp/mount.sh");
+sleep(3);
+
+ui_print("- Installing Your Files");
+package_extract_dir("vendor", "/vendor");
+
+ui_print("- Unmount System");
+run_program("/sbin/busybox", "umount", "/vendor");
+ui_print(" ");
+ui_print("*************************************");
+ui_print("*             congrats              *");
+ui_print("*      you are UNENCRYPTED now      *");
+ui_print("*************************************");
+ui_print("*************by.omtiooo**************");
+ui_print(" ");
